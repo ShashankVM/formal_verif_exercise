@@ -1,0 +1,20 @@
+{
+  "name": "Formal Verification Lab Workspace",
+  "image": "://microsoft.com",
+  
+  // Triggers the automated EBMC installation package on initial environment fork initialization
+  "onCreateCommand": "chmod +x install.sh && sudo ./install.sh",
+  
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "hudson-river-trading.vscode-slang",
+        "lramseyer.vaporview"
+      ]
+    }
+  }
+}
+
