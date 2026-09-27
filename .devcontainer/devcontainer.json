@@ -1,10 +1,10 @@
 {
   "name": "Formal Verification Lab Workspace",
-  "image": "://microsoft.com",
-  
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
   // Triggers the automated EBMC installation package on initial environment fork initialization
   "onCreateCommand": "chmod +x install.sh && sudo ./install.sh",
-  
+
   "customizations": {
     "vscode": {
       "settings": {
@@ -17,4 +17,3 @@
     }
   }
 }
-
