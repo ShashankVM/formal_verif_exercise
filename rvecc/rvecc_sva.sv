@@ -35,45 +35,40 @@ module rvecc_sva  #(
 
 
  // check if no error injected then encoded data matches the decoded data
- //   ASSERT_NO_ERROR_PRESENT_DECODED_DATA:
+ // ASSERT_NO_ERROR_PRESENT_DECODED_DATA: assert property ();
 
  // check if no errors detected or corrected when decoder is disabled
- //   ASSERT_DECODER_ENABLE_FALSE:
+ // ASSERT_DECODER_ENABLE_FALSE: assert property ();
 
     // check if if no errors injected, then no errors are detected when decoder is enabled
- //   ASSERT_NO_FALSE_DOUBLE_ERROR_DETECTION:
-//    ASSERT_NO_FALSE_SINGLE_ERROR_DETECTION:
+ // ASSERT_NO_FALSE_DOUBLE_ERROR_DETECTION: assert property ();
+ // ASSERT_NO_FALSE_SINGLE_ERROR_DETECTION: assert property ();
+
+  // check if single_ecc_error and double_ecc_error are mutually exclusive when 1
+ // ASSERT_SINGLE_ECC_ERROR_EXCLUSIVE_DOUBLE_ECC_ERROR: assert property ();
     
     // check if all double-errors injected are detected when decoder is enabled
- //   ASSERT_DOUBLE_ERROR_DETECTION_DOUBLE_ECC_ERROR:
+ // ASSERT_DOUBLE_ERROR_DETECTION_DOUBLE_ECC_ERROR: assert property ();
 
     // check if when double-errors are injected, single_ecc_error remains low
- //   ASSERT_DOUBLE_ERROR_DETECTION_NO_SINGLE_ECC_ERROR:
+ //  ASSERT_DOUBLE_ERROR_DETECTION_NO_SINGLE_ECC_ERROR: assert property ();
     
     // in single-error and double-error detection mode when decoder is enabled, single_ecc_error should be low
-//    ASSERT_NO_SINGLE_ERROR_CORRECTION_IN_SED_DED:
+ //  ASSERT_NO_SINGLE_ERROR_CORRECTION_IN_SED_DED: assert property (); 
 
     // in single-error and double-error detection mode when decoder is enabled, all single errors injected should cause double_ecc_error to go to 1 since single_ecc_error will be low
 
- //   ASSERT_SINGLE_ERROR_CORRECTION_IN_SED_DED_DOUBLE_ECC_ERROR:
+ //  ASSERT_SINGLE_ERROR_CORRECTION_IN_SED_DED_DOUBLE_ECC_ERROR: assert property ();
 
     // in single-error correction mode when decoder is enabled, all single errors injected should cause single_ecc_error to go to 1
- //   ASSERT_SINGLE_ERROR_CORRECTION_IN_NO_SED_DED:
+ //  ASSERT_SINGLE_ERROR_CORRECTION_IN_NO_SED_DED: assert property ();
         
     // for single errors injected, double_ecc_error should remain low when sed_ded == 0    
-  //  ASSERT_NO_DOUBLE_ERROR_CORRECTION_IN_NO_SED_DED:
+ //  ASSERT_NO_DOUBLE_ERROR_CORRECTION_IN_NO_SED_DED: assert property ();
 
-  // check if all single errors are corrected - unoptimized
- //  ASSERT_DATA_CORRECTION: assert property ();
 
-    // use a case splitting optimization to quickly check if all possible error positions are corrected. A speedup of 2.5x compared to without case splitting.    
-/*   genvar i;
-    generate
-      for (i = 0; i <= CHANNEL_WIDTH-1; i++) begin : loop_error_pos
-        ASSERT_DATA_CORRECTION:
-      end
-    endgenerate  
- */
+//   ASSERT_DATA_CORRECTION: assert property ();
+ 
     // cover data is zero
     COVER_ALL_0: cover property (encoded_data == 0);
 
