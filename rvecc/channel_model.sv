@@ -25,7 +25,7 @@ module channel_model #(CHANNEL_WIDTH=39) (
     ASSUME_VALID_ERROR_POSITION2: assume property ((error_pos2 >=0) && (error_pos2 < CHANNEL_WIDTH));
 
     // different error positions for double errors 
-   // ASSUME_UNIQUE_DOUBLE_ERROR_POSITION: assume property (double_error_inject |-> (error_pos1 != error_pos2));
+   // ASSUME_UNIQUE_DOUBLE_ERROR_POSITION: assume property ();
 
     // if a single error is injected, don't inject double error at the same time
   //  ASSUME_SINGLE_OR_DOUBLE_ERROR: assume property ();
