@@ -33,44 +33,21 @@ module rvecc_sva  #(
                                                     .double_ecc_error(double_ecc_error));    
 
 
-    // write a reusable property for valid error position
-   // property valid_error_pos(error_pos);
 
-   // endproperty
-
-    // constrain the valid error positions using the reusable property
-   // ASSUME_VALID_ERROR_POSITION1:
-  //  ASSUME_VALID_ERROR_POSITION2:
-
-    // different error positions for double errors 
-  //  ASSUME_UNIQUE_DOUBLE_ERROR_POSITION:
-
-    // if a single error is injected, don't inject double error at the same time
-  //  ASSUME_SINGLE_OR_DOUBLE_ERROR:
-
-    // prove that a single injected error causes encoded data to be not equal to received data
-  //  ASSERT_SINGLE_ERROR_PRESENT:
-
-    // prove that a double injected error causes encoded data to be not equal to received data
-  //  ASSERT_DOUBLE_ERROR_PRESENT:
-
-    // prove that if no error injected then encoded data matches the received data
- //   ASSERT_NO_ERROR_PRESENT_RECEIVED_DATA:
-
-    // prove that if no error injected then encoded data matches the decoded data
+ // check if no error injected then encoded data matches the decoded data
  //   ASSERT_NO_ERROR_PRESENT_DECODED_DATA:
 
-    // prove that no errors detected or corrected when decoder is disabled
+ // check if no errors detected or corrected when decoder is disabled
  //   ASSERT_DECODER_ENABLE_FALSE:
 
-    // prove that if no errors injected, then no errors are detected when decoder is enabled
+    // check if if no errors injected, then no errors are detected when decoder is enabled
  //   ASSERT_NO_FALSE_DOUBLE_ERROR_DETECTION:
 //    ASSERT_NO_FALSE_SINGLE_ERROR_DETECTION:
     
-    // prove that all double-errors injected are detected when decoder is enabled
+    // check if all double-errors injected are detected when decoder is enabled
  //   ASSERT_DOUBLE_ERROR_DETECTION_DOUBLE_ECC_ERROR:
 
-    // prove that when double-errors are injected, single_ecc_error remains low
+    // check if when double-errors are injected, single_ecc_error remains low
  //   ASSERT_DOUBLE_ERROR_DETECTION_NO_SINGLE_ECC_ERROR:
     
     // in single-error and double-error detection mode when decoder is enabled, single_ecc_error should be low
@@ -86,10 +63,10 @@ module rvecc_sva  #(
     // for single errors injected, double_ecc_error should remain low when sed_ded == 0    
   //  ASSERT_NO_DOUBLE_ERROR_CORRECTION_IN_NO_SED_DED:
 
-  // prove that all single errors are corrected - unoptimized
+  // check if all single errors are corrected - unoptimized
  //  ASSERT_DATA_CORRECTION: assert property ();
 
-    // use a case splitting optimization to quickly prove that all possible error positions are corrected. A speedup of 2.5x compared to without case splitting.    
+    // use a case splitting optimization to quickly check if all possible error positions are corrected. A speedup of 2.5x compared to without case splitting.    
 /*   genvar i;
     generate
       for (i = 0; i <= CHANNEL_WIDTH-1; i++) begin : loop_error_pos
@@ -100,6 +77,7 @@ module rvecc_sva  #(
     // cover data is zero
     COVER_ALL_0: cover property (encoded_data == 0);
 
+    
     // cover data is non-zero
 //    COVER_NON_0: cover property ();
 
